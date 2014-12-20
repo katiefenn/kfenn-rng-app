@@ -14,10 +14,10 @@ var ParseForm = React.createClass({
             <fieldset>
                 <legend>Roman To Decimal</legend>
                 <label htmlFor="roman-value">Roman value:</label>
-                <input name="roman-value" type="text" onChange={this.handleChange}></input>
+                <input name="roman-value" className="parse-form__input" type="text" onChange={this.handleChange}></input>
                 <p>
                     Decimal value:
-                    {decimalValue}
+                    <div className="parse-form__result">{decimalValue}</div>
                 </p>
             </fieldset>
         );

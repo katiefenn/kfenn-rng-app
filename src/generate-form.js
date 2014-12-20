@@ -14,10 +14,10 @@ var GenerateForm = React.createClass({
             <fieldset>
                 <legend>Decimal to Roman</legend>
                 <label htmlFor="decimal-value">Decimal value:</label>
-                <input name="decimal-value" type="text" onChange={this.handleChange}></input>
+                <input name="decimal-value" className="generator-form__input" type="text" onChange={this.handleChange}></input>
                 <p>
                     Roman value:
-                    {romanValue}
+                    <div className="generator-form__result">{romanValue}</div>
                 </p>
             </fieldset>
         );
