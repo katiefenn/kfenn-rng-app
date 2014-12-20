@@ -7,15 +7,16 @@
 </head>
 <body>
     <h1>Roman Numeral Generator App</h1>
-    <form name="decimal-to-roman-form" id="decial-to-roman-form">
-        <fieldset>
-            <legend>Decimal to Roman</legend>
-            <label for="decimal-value">Decimal value</label>
-            <input name="decimal-value" id="decimal-value" type="text"></input>
-            <input type="button" name="submit" id="submit" value="Submit"></input>
-        </fieldset>
+    <form name="decimal-to-roman-form" id="decimal-to-roman-form">
+    </form>
+    <form name="roman-to-decimal-form" id="roman-to-decimal-form">
     </form>
 
     <script type="text/javascript" src="lib/react/react.js"></script>
+    <script type="text/javascript" src="lib/react/JSXTransformer.js"></script>
+    <script type="text/javascript" src="src/RomanNumeralGenerator.js"></script>
+    <script src="//localhost:35729/livereload.js"></script>
+    <script type="text/jsx" src="src/generate-form.js"></script>
+    <script type="text/jsx" src="src/parse-form.js"></script>
 </body>
 </html>

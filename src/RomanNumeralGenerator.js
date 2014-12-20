@@ -1,0 +1,199 @@
+var RomanNumeralGenerator = (function () {
+    var NUMERALS = {
+        'I': 1,
+        'IV': 4,
+        'V': 5,
+        'IX': 9,
+        'X': 10,
+        'XL': 40,
+        'L': 50,
+        'XC': 90,
+        'C': 100,
+        'CD': 400,
+        'D': 500,
+        'CM': 900,
+        "M": 1000
+    };
+
+    function RomanNumeralGenerator () {
+
+    }
+
+    RomanNumeralGenerator.prototype.generate = function (decimalValue) {
+        return [
+            getMs(decimalValue),
+            getCMs(decimalValue),
+            getDs(decimalValue),
+            getCDs(decimalValue),
+            getCs(decimalValue),
+            getXCs(decimalValue),
+            getLs(decimalValue),
+            getXLs(decimalValue),
+            getXs(decimalValue),
+            getIXs(decimalValue),
+            getVs(decimalValue),
+            getIVs(decimalValue),
+            getIs(decimalValue)
+        ].join("");
+    };
+
+    RomanNumeralGenerator.prototype.parse = function (romanValue) {
+        var segment = '',
+            decimalValue = 0;
+
+        for (var index = 0, limit = romanValue.length; index < limit; index++) {
+            segment += romanValue[index];
+            if (NUMERALS.hasOwnProperty(segment + romanValue[index + 1])) {
+                segment += romanValue[index + 1];
+                index++;
+                decimalValue += NUMERALS[segment];
+                segment = "";
+            }
+            else if (NUMERALS.hasOwnProperty(segment)) {
+                decimalValue += NUMERALS[segment];
+                segment = "";
+            }
+        }
+
+        return decimalValue;
+    };
+
+    function getIs(decimalValue) {
+        var unitsValue = units(decimalValue);
+        if ([1,2,3].indexOf(unitsValue) != -1) {
+            return repeatCharacter("I", unitsValue);
+        }
+        if ([6,7,8].indexOf(unitsValue) != -1) {
+            return repeatCharacter("I", unitsValue - 5);
+        }
+
+        return "";
+    }
+
+    function getIVs(decimalValue) {
+        if (units(decimalValue) === 4) {
+            return "IV";
+        }
+
+        return "";
+    }
+
+    function getVs(decimalValue) {
+        if (units(decimalValue) >= 5 && units(decimalValue) < 9) {
+            return "V";
+        }
+
+        return "";
+    }
+
+    function getIXs(decimalValue) {
+        if (units(decimalValue) === 9) {
+            return "IX";
+        }
+
+        return "";
+    }
+
+    function getXs(decimalValue) {
+        var tensValue = tens(decimalValue);
+        if ([1,2,3].indexOf(tensValue) != -1) {
+            return repeatCharacter("X", tensValue);
+        }
+        if([6,7,8].indexOf(tensValue) != -1) {
+            return repeatCharacter("X", tensValue - 5);
+        }
+
+        return "";
+    }
+
+    function getXLs(decimalValue) {
+        if (tens(decimalValue) == 4) {
+            return "XL";
+        }
+
+        return "";
+    }
+
+    function getLs(decimalValue) {
+        if (tens(decimalValue) >= 5 && tens(decimalValue) < 9) {
+            return "L";
+        }
+
+        return "";
+    }
+
+    function getXCs(decimalValue) {
+        if (tens(decimalValue) == 9) {
+            return "XC";
+        }
+
+        return "";
+    }
+
+    function getCs(decimalValue) {
+        var hundredsValue = hundreds(decimalValue);
+        if ([1,2,3].indexOf(hundredsValue) != -1) {
+            return repeatCharacter("C", hundredsValue);
+        }
+        if ([6,7,8].indexOf(hundredsValue) != -1) {
+            return repeatCharacter("C", hundredsValue - 5);
+        }
+
+        return "";
+    }
+
+    function getCDs(decimalValue) {
+        if (hundreds(decimalValue) == 4) {
+            return "CD";
+        }
+
+        return "";
+    }
+
+    function getDs(decimalValue) {
+        if (hundreds(decimalValue) >= 5 && hundreds(decimalValue) < 9) {
+            return "D";
+        }
+
+        return "";
+    }
+
+    function getCMs(decimalValue) {
+        if (hundreds(decimalValue) == 9) {
+            return "CM";
+        }
+
+        return "";
+    }
+
+    function getMs(decimalValue) {
+        var thousands = Math.floor(decimalValue / 1000);
+        if (thousands > 0) {
+            return repeatCharacter("M", thousands);
+        }
+    }
+
+    function repeatCharacter(character, repetitions) {
+        var output = "";
+        for (var index = 0; index < repetitions; index++) {
+            output += character;
+        }
+
+        return output;
+    }
+
+    function units(decimalValue) {
+        return decimalValue % 10;
+    }
+
+    function tens(decimalValue) {
+        return Math.floor(decimalValue / 10) % 10;
+    }
+
+    function hundreds(decimalValue) {
+        return Math.floor(decimalValue / 100) % 100;
+    }
+
+    return RomanNumeralGenerator;
+
+}());
