@@ -1,0 +1,17 @@
+{
+  "name": "roman-numeral-generator-app",
+  "version": "0.0.0",
+  "description": "A roman numeral generator app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "utility",
+    "roman",
+    "numerals",
+    "numbers"
+  ],
+  "author": "Katie Fenn",
+  "license": "ISC"
+}
