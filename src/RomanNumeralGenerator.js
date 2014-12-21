@@ -22,6 +22,8 @@ var RomanNumeralGenerator = (function () {
         'M': -1
     };
 
+    var INVALID_NUMERAL_CHARACTERS = /[^IVXLCDM]+/gi;
+
     function RomanNumeralGenerator () {
 
     }
@@ -81,40 +83,44 @@ var RomanNumeralGenerator = (function () {
         return numeralArray;
     }
 
-    RomanNumeralGenerator.prototype.isValidNumeral = function (romanValue) {
-        var numeralArray,
-            invalidString = /[^IVXLCDM]+/gi,
-            result = true;
+        RomanNumeralGenerator.prototype.isValidNumeral = function (romanValue) {
+            var numeralArray;
 
-        if (isString(romanValue)) {
-            numeralArray = numeralToArray(romanValue);
-        }
-        else if (isArray(romanValue)) {
-            numeralArray = romanValue;
-        }
-        else {
-            return false;
-        }
-
-        if (invalidString.test(romanValue)) {
-            return false;
-        }
-
-        each(numeralArray, function (index, numeral) {
-            var items = itemsByValue(numeralArray, numeral),
-                numeralLimit = NUMERAL_MULTIPLES[numeral] || 1;
-
-            if (items.length > numeralLimit && numeralLimit != -1) {
-                result = false;
+            if (isString(romanValue)) {
+                numeralArray = numeralToArray(romanValue);
+            }
+            else if (isArray(romanValue)) {
+                numeralArray = romanValue;
+            }
+            else {
+                return false;
             }
 
-            if (NUMERALS[numeral] > NUMERALS[numeralArray[index - 1]]) {
-                result = false;
+            if (INVALID_NUMERAL_CHARACTERS.test(romanValue)) {
+                return false;
             }
-        });
 
-        return result;
-    };
+            return isValidNumeralFormat(numeralArray);
+        };
+
+        function isValidNumeralFormat(numeralArray) {
+            var result = true;
+
+            each(numeralArray, function (index, numeral) {
+                var items = itemsByValue(numeralArray, numeral),
+                    numeralLimit = NUMERAL_MULTIPLES[numeral] || 1;
+
+                if (items.length > numeralLimit && numeralLimit != -1) {
+                    result = false;
+                }
+
+                if (NUMERALS[numeral] > NUMERALS[numeralArray[index - 1]]) {
+                    result = false;
+                }
+            });
+
+            return result;
+        }
 
     function getIs(decimalValue) {
         var unitsValue = units(decimalValue);
