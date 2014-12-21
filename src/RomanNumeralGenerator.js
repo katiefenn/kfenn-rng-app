@@ -15,6 +15,13 @@ var RomanNumeralGenerator = (function () {
         "M": 1000
     };
 
+    var NUMERAL_MULTIPLES = {
+        'I': 3,
+        'X': 3,
+        'C': 3,
+        'M': -1
+    };
+
     function RomanNumeralGenerator () {
 
     }
@@ -38,24 +45,66 @@ var RomanNumeralGenerator = (function () {
     };
 
     RomanNumeralGenerator.prototype.parse = function (romanValue) {
-        var segment = '',
-            decimalValue = 0;
+        var decimalValue = 0,
+            numeralArray = numeralToArray(romanValue);
+
+        if (!this.isValidNumeral(romanValue)) {
+            return -1;
+        }
+
+        each(numeralArray, function (index, item) {
+            decimalValue += NUMERALS[item];
+        });
+
+
+        return decimalValue;
+    };
+
+    function numeralToArray(romanValue) {
+        var segment = "",
+            numeralArray = [];
 
         for (var index = 0, limit = romanValue.length; index < limit; index++) {
             segment += romanValue[index];
             if (NUMERALS.hasOwnProperty(segment + romanValue[index + 1])) {
                 segment += romanValue[index + 1];
                 index++;
-                decimalValue += NUMERALS[segment];
+                numeralArray.push(segment);
                 segment = "";
             }
             else if (NUMERALS.hasOwnProperty(segment)) {
-                decimalValue += NUMERALS[segment];
+                numeralArray.push(segment);
                 segment = "";
             }
         }
 
-        return decimalValue;
+        return numeralArray;
+    }
+
+    RomanNumeralGenerator.prototype.isValidNumeral = function (romanValue) {
+        var numeralArray,
+            result = true;
+
+        if ( typeof romanValue  === 'string' ) {
+            numeralArray = numeralToArray(romanValue);
+        } else {
+            numeralArray = romanValue;
+        }
+
+        each(numeralArray, function (index, numeral) {
+            var items = itemsByValue(numeralArray, numeral),
+                numeralLimit = NUMERAL_MULTIPLES[numeral] || 1;
+
+            if (items.length > numeralLimit && numeralLimit != -1) {
+                result = false;
+            }
+
+            if (NUMERALS[numeral] > NUMERALS[numeralArray[index - 1]]) {
+                result = false;
+            }
+        });
+
+        return result;
     };
 
     function getIs(decimalValue) {
@@ -192,6 +241,23 @@ var RomanNumeralGenerator = (function () {
 
     function hundreds(decimalValue) {
         return Math.floor((decimalValue / 100) % 10);
+    }
+
+    function each(collection, onEach) {
+        for(var index = 0, limit = collection.length; index < limit; index++) {
+            onEach(index, collection[index], collection);
+        }
+    }
+
+    function itemsByValue(collection, value) {
+        var items = [];
+        each(collection, function (index, item) {
+            if (item == value) {
+                items.push(value);
+            }
+        });
+
+        return items;
     }
 
     return RomanNumeralGenerator;
