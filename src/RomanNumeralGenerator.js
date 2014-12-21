@@ -117,6 +117,10 @@ var RomanNumeralGenerator = (function () {
                 if (NUMERALS[numeral] > NUMERALS[numeralArray[index - 1]]) {
                     result = false;
                 }
+
+                if (isSubtractive(numeral) && instanceOfOrderExists(numeral, numeralArray)) {
+                    result = false;
+                }
             });
 
             return result;
@@ -281,6 +285,26 @@ var RomanNumeralGenerator = (function () {
 
     function isString(obj) {
         return typeof obj === 'string';
+    }
+
+    function isSubtractive(numeral) {
+        return numeral.length > 1;
+    }
+
+    function instanceOfOrderExists(numeral, numerals) {
+        var result = false;
+
+        each(numerals, function (index, item) {
+            if(ofSameOrder(numeral, item) && item != numeral) {
+                result = true;
+            }
+        });
+
+        return result;
+    }
+
+    function ofSameOrder(numeral1, numeral2) {
+        return NUMERALS[numeral1].toString().length == NUMERALS[numeral2].toString().length;
     }
 
     return RomanNumeralGenerator;
