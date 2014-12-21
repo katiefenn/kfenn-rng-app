@@ -1,0 +1,25 @@
+div, form, fieldset, label, h1, h2, h3, h4, h5, h6 {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $primary-background;
+    color: $primary-text; 
+}
+
+h1 {
+    width: 100%;
+    color: $primary-text;
+    @include font-size(30);
+    text-align: center;
+
+    @include media($tablet-and-up) {
+        @include font-size(40);
+    }
+
+    @include media($desktop-and-up) {
+        @include font-size(50);
+        width: 300px;
+        text-align: left;
+    } 
+}
