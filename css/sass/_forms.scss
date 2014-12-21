@@ -46,6 +46,8 @@ fieldset {
     }
 
     .form__result {
+        width: 100%;
+        height: calculate-rem(60);
         display: inline-block;
         font-family: 'PT Serif Caption', serif;
         @include font-size(30);
@@ -55,6 +57,7 @@ fieldset {
         top: 3px;
 
         @include media($tablet-and-up) {
+            width: auto;
             margin: 0 0 0 calculate-rem(20);
         }
 
@@ -73,10 +76,15 @@ fieldset {
 }
 
 .form__heading_result {
+    width: 100%;
     @include font-size(20);
     display: inline-block;
     line-height: 60px;
     margin: 0;
+    
+    @include media($tablet-and-up) {
+        width: auto;
+    }
 }
 
 .form__input {
