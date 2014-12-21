@@ -25,11 +25,14 @@ fieldset { width: 100%; border: none; margin: 0; padding: 1.25rem; }
 .form__field { width: 100%; }
 @media screen and (min-width: 800px) { .form__field { display: table-cell; width: 50%; } }
 
-.form__result { display: inline-block; font-family: 'PT Serif Caption', serif; font-size: 30px; font-size: 1.875rem; line-height: 60px; margin: 0 0 0 1.25rem; position: relative; top: 3px; }
+.form__result { display: inline-block; font-family: 'PT Serif Caption', serif; font-size: 30px; font-size: 1.875rem; line-height: 60px; margin: 0; position: relative; top: 3px; }
+@media screen and (min-width: 800px) { .form__result { margin: 0 0 0 1.25rem; } }
 @media screen and (min-width: 1024px) { .form__result { margin: 0 0 0 4.375rem; } }
 
-.form__label { font-size: 20px; font-size: 1.25rem; }
+.form__label { width: 100%; font-size: 20px; font-size: 1.25rem; }
+@media screen and (min-width: 800px) { .form__label { width: auto; } }
 
 .form__heading_result { font-size: 20px; font-size: 1.25rem; display: inline-block; line-height: 60px; margin: 0; }
 
-.form__input { font-size: 20px; font-size: 1.25rem; background: #7375b2; border: 1px solid #f3f3f3; color: white; margin: 0 0 0 1.25rem; }
+.form__input { width: 100%; font-size: 20px; font-size: 1.25rem; background: #7375b2; border: 1px solid #f3f3f3; color: white; margin: 0; }
+@media screen and (min-width: 800px) { .form__input { margin: 0 0 0 1.25rem; width: auto; } }
