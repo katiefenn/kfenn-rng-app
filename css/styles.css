@@ -1,0 +1,35 @@
+/* Media breakpoints */
+body { font-family: 'Lato', sans-serif; font-weight: 400; }
+
+h1, h2 { font-weight: 300; }
+
+div, form, fieldset, label, h1, h2, h3, h4, h5, h6 { box-sizing: border-box; }
+
+body { background-color: #f3f3f3; color: #25265f; }
+
+h1 { width: 100%; color: #25265f; font-size: 30px; font-size: 1.875rem; text-align: center; }
+@media screen and (min-width: 800px) { h1 { font-size: 40px; font-size: 2.5rem; } }
+@media screen and (min-width: 1024px) { h1 { font-size: 50px; font-size: 3.125rem; width: 300px; text-align: left; } }
+
+.form { background-color: #575999; color: #f3f3f3; margin: 0 0 1.875rem 0; }
+
+.form__heading_main { margin: 0; padding: 0.25rem 0; background: #7375b2; color: white; text-align: center; }
+
+fieldset { width: 100%; border: none; margin: 0; padding: 1.25rem; }
+
+.form__fieldlist { width: 100%; margin: 0; padding: 0; list-style: none; }
+@media screen and (min-width: 800px) { .form__fieldlist { display: table; } }
+
+@media screen and (min-width: 800px) { .form__fieldlist-row { display: table-row; } }
+
+.form__field { width: 100%; }
+@media screen and (min-width: 800px) { .form__field { display: table-cell; width: 50%; } }
+
+.form__result { display: inline-block; font-family: 'PT Serif Caption', serif; font-size: 30px; font-size: 1.875rem; line-height: 60px; margin: 0 0 0 1.25rem; position: relative; top: 3px; }
+@media screen and (min-width: 1024px) { .form__result { margin: 0 0 0 4.375rem; } }
+
+.form__label { font-size: 20px; font-size: 1.25rem; }
+
+.form__heading_result { font-size: 20px; font-size: 1.25rem; display: inline-block; line-height: 60px; margin: 0; }
+
+.form__input { font-size: 20px; font-size: 1.25rem; background: #7375b2; border: 1px solid #f3f3f3; color: white; margin: 0 0 0 1.25rem; }
