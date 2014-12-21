@@ -50,9 +50,13 @@ fieldset {
         font-family: 'PT Serif Caption', serif;
         @include font-size(30);
         line-height: 60px;
-        margin: 0 0 0 calculate-rem(20);
+        margin: 0;
         position: relative;
         top: 3px;
+
+        @include media($tablet-and-up) {
+            margin: 0 0 0 calculate-rem(20);
+        }
 
         @include media($desktop-and-up) {
             margin: 0 0 0 calculate-rem(70);
@@ -60,7 +64,12 @@ fieldset {
     }
 
 .form__label {
+    width: 100%;
     @include font-size(20);
+
+    @include media($tablet-and-up) {
+        width: auto;
+    }
 }
 
 .form__heading_result {
@@ -71,9 +80,15 @@ fieldset {
 }
 
 .form__input {
+    width: 100%;
     @include font-size(20);
     background: $tertiary-background;
     border: 1px solid $primary-background;
     color: $tertiary-text;
-    margin: 0 0 0 calculate-rem(20);
+    margin: 0;
+
+    @include media($tablet-and-up) {
+        margin: 0 0 0 calculate-rem(20);
+        width: auto;
+    }
  }
