@@ -3,6 +3,16 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        sass: {
+          dist: {
+            options: {
+              style: 'compact'
+            },
+            files: {
+              'css/styles.css': 'css/styles.scss'
+            }
+          }
+        },
         connect: {
             server: {
                 options: {
@@ -23,11 +33,25 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            reload: {
-                files: ['index.html','src/*.js'],
+            markup: {
+                files: ['index.html'],
                 tasks: [],
                 options: {
                     livereload: true 
+                }
+            },
+            js: {
+                files: ['js/*'],
+                tasks: [],
+                options: {
+                    livereload: true
+                }
+            },
+            sass: {
+                files: ['css/styles.scss','css/sass/*'],
+                tasks: ['sass'],
+                options: {
+                    livereload: true
                 }
             }
         }
@@ -35,8 +59,9 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     //grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('dev', ['connect','watch']);
+    grunt.registerTask('dev', ['sass','connect','watch']);
 
 };

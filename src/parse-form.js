@@ -11,15 +11,23 @@ var ParseForm = React.createClass({
     render: function() {
         var decimalValue = romanNumeralGenerator.parse(this.state.romanValue);
         return (
-            <fieldset>
-                <legend>Roman To Decimal</legend>
-                <label htmlFor="roman-value">Roman value:</label>
-                <input name="roman-value" className="parse-form__input" type="text" onChange={this.handleChange}></input>
-                <p>
-                    Decimal value:
-                    <div className="parse-form__result">{decimalValue}</div>
-                </p>
-            </fieldset>
+            <div>
+                <h2 className="form__heading form__heading_main">Roman to Decimal</h2>
+                <fieldset>
+                    <ul className="form__fieldlist">
+                        <li className="form__fieldlist-row">
+                            <div className="form__field">
+                                <label htmlFor="roman-value" className="form__label">Roman value:</label>
+                                <input name="roman-value" className="form__input" type="text" onChange={this.handleChange}></input>
+                            </div>
+                            <div className="form__field">
+                                <h3 className="form__heading form__heading_result">Decimal value:</h3>
+                                <div className="form__result">{decimalValue}</div>
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
         );
     }
 });

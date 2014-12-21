@@ -3,16 +3,16 @@ casper.test.begin('Roman numeral parse form', 3, function suite(test) {
 
     casper.waitForSelector('#roman-to-decimal-form', function() {
         test.assertExists('#roman-to-decimal-form', "parse form is found");
-        test.assertExists('#roman-to-decimal-form .parse-form__input', "form field is found");
+        test.assertExists('#roman-to-decimal-form .form__input', "form field is found");
     });
 
-    casper.waitForSelector('#roman-to-decimal-form .parse-form__input', function () {
-        casper.sendKeys('#roman-to-decimal-form .parse-form__input', 'X');
+    casper.waitForSelector('#roman-to-decimal-form .form__input', function () {
+        casper.sendKeys('#roman-to-decimal-form .form__input', 'X');
     });
 
     casper.then(function () {
         test.assertSelectorHasText(
-            '#roman-to-decimal-form .parse-form__result',
+            '#roman-to-decimal-form .form__result',
             '10',
             'Typing roman numeral into form shows decimal number value'
         );
