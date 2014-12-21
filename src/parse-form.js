@@ -36,6 +36,6 @@ var ParseForm = React.createClass({
 });
 
 React.render(
-    <ParseForm romanNumeralGenerator={new RomanNumeralGenerator} />,
+    <ParseForm />,
     document.getElementById('roman-to-decimal-form')
 );

@@ -33,6 +33,6 @@ var GenerateForm = React.createClass({
 });
 
 React.render(
-    <GenerateForm romanNumeralGenerator={new RomanNumeralGenerator} />,
+    <GenerateForm />,
     document.getElementById('decimal-to-roman-form')
 );
