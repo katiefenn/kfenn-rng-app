@@ -1,21 +1,29 @@
-casper.test.begin('Roman numeral parse form', 3, function suite(test) {
+casper.test.begin('Roman numeral parse form', 5, function suite(test) {
+    var formSelector = "#roman-to-decimal-form",
+        fieldSelector = "#roman-to-decimal-form .form__input",
+        resultSelector = "#roman-to-decimal-form .form__result";
+
     casper.start("http://localhost:9001/");
 
-    casper.waitForSelector('#roman-to-decimal-form', function() {
-        test.assertExists('#roman-to-decimal-form', "parse form is found");
-        test.assertExists('#roman-to-decimal-form .form__input', "form field is found");
+    casper.waitForSelector(formSelector, function() {
+        test.assertExists(formSelector, "parse form is found");
+        test.assertExists(fieldSelector, "form field is found");
     });
 
-    casper.waitForSelector('#roman-to-decimal-form .form__input', function () {
-        casper.sendKeys('#roman-to-decimal-form .form__input', 'X');
+    casper.then(function () {
+        casper.sendKeys(fieldSelector, 'X');
     });
 
     casper.then(function () {
         test.assertSelectorHasText(
-            '#roman-to-decimal-form .form__result',
+            resultSelector,
             '10',
             'Typing roman numeral into form shows decimal number value'
         );
+    });
+
+    casper.then(function () {
+        test.assertExists(fieldSelector + "[maxlength='4']", "Field length is capped at four characters");
 
         test.done();
     });

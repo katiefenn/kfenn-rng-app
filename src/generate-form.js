@@ -18,7 +18,7 @@ var GenerateForm = React.createClass({
                         <li className="form__fieldlist-row">
                             <div className="form__field">
                                 <label htmlFor="decimal-value" className="form__label">Decimal value:</label>
-                                <input name="decimal-value" className="form__input" type="text" onChange={this.handleChange}></input>
+                                <input name="decimal-value" className="form__input" type="text" maxLength="4" onChange={this.handleChange}></input>
                             </div>
                             <div className="form__field">
                                 <h3 for="roman-value" className="form__heading form__heading_result">Roman value: </h3>
