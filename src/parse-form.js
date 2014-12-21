@@ -21,7 +21,7 @@ var ParseForm = React.createClass({
                         <li className="form__fieldlist-row">
                             <div className="form__field">
                                 <label htmlFor="roman-value" className="form__label">Roman value:</label>
-                                <input name="roman-value" className="form__input" type="text" maxLength="4" onChange={this.handleChange}></input>
+                                <input name="roman-value" className="form__input" type="text" onChange={this.handleChange}></input>
                             </div>
                             <div className="form__field">
                                 <h3 className="form__heading form__heading_result">Decimal value:</h3>

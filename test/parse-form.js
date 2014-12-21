@@ -21,12 +21,6 @@ casper.test.begin('Roman numeral parse form', 5, function suite(test) {
             'Typing roman numeral into form shows decimal number value'
         );
     });
-
-    casper.then(function () {
-        test.assertExists(fieldSelector + "[maxlength='4']", "Field length is capped at four characters");
-
-        test.done();
-    });
 });
 
 casper.run();
