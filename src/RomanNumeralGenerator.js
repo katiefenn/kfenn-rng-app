@@ -67,7 +67,7 @@ var RomanNumeralGenerator = (function () {
      */
     RomanNumeralGenerator.prototype.parse = function (romanValue) {
         var decimalValue = 0,
-            numeralArray = numeralToArray(romanValue);
+            numeralArray = numeralToArray(romanValue.toUpperCase());
 
         if (!this.isValidNumeral(romanValue)) {
             return -1;
