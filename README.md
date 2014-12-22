@@ -8,7 +8,7 @@ The app is bundled with a development server. To use it, make sure you have the 
 - npm
 - Grunt
 
-Then run the command from the command line in the project root directory:
+Then run the commands from the command line in the project root directory:
 
 ```
 npm install
@@ -25,11 +25,13 @@ The app is tested using CasperJS functional tests. To test the app, __start the 
 - PhantomJS
 - CasperJS
 
-Then run the command from the command line:
+Then run the commands from the command line:
 
 ```
+grunt server
 npm test
 ```
+N.b. you will need to use separate terminal windows to run each command, because Grunt waits for connections to the server.
 
 ## Live Demo
 The app is also hosted on GitHub Pages for demonstration:
