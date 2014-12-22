@@ -39,6 +39,10 @@ var RomanNumeralGenerator = (function () {
      * @param {number} - decimal number to generate numeral of
      */
     RomanNumeralGenerator.prototype.generate = function (decimalValue) {
+        if (!isInteger(decimalValue)) {
+            return "";
+        }
+
         return [
             getMs(decimalValue),
             getCMs(decimalValue),
@@ -361,14 +365,12 @@ var RomanNumeralGenerator = (function () {
     }
 
     /**
-     * Determines if two numerals are of same order (units, tens, hundreds)
-     * @function ofSameOrder
-     * @param {string} numeral1 - First numeral to evaluate
-     * @param {string} numeral2 - Second numeral to evaluate
+     * Determines if an object is an integer number
+     * @function isInteger
+     * @param {mixed} obj - Object to evaluate
      */
-    function ofSameOrder(numeral1, numeral2) {
-        // Numeral decimal values of the same length are the same order
-        return NUMERALS[numeral1].toString().length == NUMERALS[numeral2].toString().length;
+    function isInteger(obj){
+        return Number(obj) === obj && obj % 1 === 0;
     }
 
     /**
@@ -436,6 +438,17 @@ var RomanNumeralGenerator = (function () {
         });
 
         return items;
+    }
+
+    /**
+     * Determines if two numerals are of same order (units, tens, hundreds)
+     * @function ofSameOrder
+     * @param {string} numeral1 - First numeral to evaluate
+     * @param {string} numeral2 - Second numeral to evaluate
+     */
+    function ofSameOrder(numeral1, numeral2) {
+        // Numeral decimal values of the same length are the same order
+        return NUMERALS[numeral1].toString().length == NUMERALS[numeral2].toString().length;
     }
 
     /**
