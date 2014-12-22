@@ -9,7 +9,7 @@ var GenerateForm = React.createClass({
         this.setState({decimalValue: event.target.value});
     },
     render: function() {
-        var romanValue = romanNumeralGenerator.generate(parseInt(this.state.decimalValue));
+        var romanValue = romanNumeralGenerator.generate(parseFloat(this.state.decimalValue));
         return (
             <div>
                 <h2 className="form__heading form__heading_main">Decimal to Roman</h2>
