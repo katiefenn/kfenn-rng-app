@@ -29,3 +29,7 @@ Then run the command from the command line:
 ```
 npm test
 ```
+
+## Live Demo
+The app is also hosted on GitHub Pages for demonstration:
+[http://katiefenn.github.io/kfenn-rng-app/](http://katiefenn.github.io/kfenn-rng-app/)
