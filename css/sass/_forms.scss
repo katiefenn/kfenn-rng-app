@@ -58,6 +58,7 @@ fieldset {
 
         @include media($tablet-and-up) {
             width: auto;
+            height: auto;
             margin: 0 0 0 calculate-rem(20);
         }
 
