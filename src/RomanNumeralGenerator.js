@@ -66,12 +66,12 @@ var RomanNumeralGenerator = (function () {
      * @param {string} - numeral to parse
      */
     RomanNumeralGenerator.prototype.parse = function (romanValue) {
-        var decimalValue = 0,
-            numeralArray = numeralToArray(romanValue.toUpperCase());
-
         if (!this.isValidNumeral(romanValue)) {
             return -1;
         }
+
+        var decimalValue = 0,
+            numeralArray = numeralToArray(romanValue.toUpperCase());
 
         each(numeralArray, function (index, item) {
             decimalValue += NUMERALS[item];
