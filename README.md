@@ -11,6 +11,7 @@ The app is bundled with a development server. To use it, make sure you have the 
 Then run the command from the command line in the project root directory:
 
 ```
+npm install
 grunt server
 ```
 
