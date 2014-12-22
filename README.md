@@ -11,7 +11,7 @@ The app is bundled with a development server. To use it, make sure you have the 
 Then run the command from the command line in the project root directory:
 
 ```
-grunt dev
+grunt server
 ```
 
 Grunt should automatically open a tab in a web browser, but if this doesn't work, the website can be viewed with the URL:
